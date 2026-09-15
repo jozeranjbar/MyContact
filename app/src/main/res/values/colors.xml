@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Light theme — "دو نقطه‌ی متصل": deep plum + teal, cool paper bg (from MyContact.html tokens) -->
+    <color name="bg">#F3F1F7</color>
+    <color name="bg_elevated">#FFFFFF</color>
+    <color name="surface">#FBFAFD</color>
+    <color name="border">#E1DCEA</color>
+    <color name="ink">#241B2E</color>
+    <color name="ink_soft">#6C6178</color>
+    <color name="ink_faint">#9C93A8</color>
+    <color name="primary">#4A2E6E</color>
+    <color name="primary_ink">#FFFFFF</color>
+    <color name="accent">#0E8A82</color>
+    <color name="accent_ink">#FFFFFF</color>
+    <color name="danger">#B5384A</color>
+    <color name="danger_bg">#FBEAEC</color>
+    <color name="success">#1F8F5F</color>
+    <color name="success_bg">#E9F6EF</color>
+    <color name="warn">#9A6B12</color>
+    <color name="warn_bg">#FBF2DE</color>
+    <color name="bubble_me">#D9F2CE</color>
+    <color name="bubble_me_ink">#1F3A17</color>
+    <color name="bubble_them">#D9EAFB</color>
+    <color name="bubble_them_ink">#172A3A</color>
+
+    <color name="welcome_bg">#87CEEB</color>
+    <color name="starter_grad_start">#22C55E</color>
+    <color name="starter_grad_end">#86EFAC</color>
+    <color name="receiver_grad_start">#8B5CF6</color>
+    <color name="receiver_grad_mid">#C4B5FD</color>
+    <color name="receiver_grad_end">#FBCFE8</color>
+
+    <color name="choice_starter_bg">#FBD9E3</color>
+    <color name="choice_starter_border">#F4B8C9</color>
+    <color name="choice_receiver_bg">#D8F0DA</color>
+    <color name="choice_receiver_border">#B7E1BB</color>
+
+    <color name="receiver_primary">#7C3AED</color>
+    <color name="receiver_code_bg">#FFF7FC</color>
+    <color name="receiver_code_border">#D8B4FE</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+</resources>

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_elevated"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <ImageButton
+            android:id="@+id/btnSettingsBack"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:background="@drawable/bg_icon_btn"
+            android:contentDescription="@string/btn_cancel"
+            android:src="@android:drawable/ic_media_previous" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/settings_title"
+            android:textColor="@color/ink"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <View android:layout_width="38dp" android:layout_height="38dp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_display_name"
+                android:textColor="@color/ink_soft"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/etDisplayName"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_code_box"
+                android:hint="@string/settings_display_name_hint"
+                android:inputType="text"
+                android:paddingHorizontal="12dp"
+                android:textColor="@color/ink"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="@string/settings_turn_domain"
+                android:textColor="@color/ink_soft"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/etTurnDomain"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_code_box"
+                android:inputType="text"
+                android:paddingHorizontal="12dp"
+                android:textColor="@color/ink"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="@string/settings_turn_key"
+                android:textColor="@color/ink_soft"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/etTurnKey"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_code_box"
+                android:inputType="textPassword"
+                android:paddingHorizontal="12dp"
+                android:textColor="@color/ink"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:text="@string/settings_font_size"
+                android:textColor="@color/ink_soft"
+                android:textSize="13sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnFontDec"
+                    android:layout_width="44dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/bg_icon_btn"
+                    android:text="−"
+                    android:textColor="@color/ink" />
+
+                <TextView
+                    android:id="@+id/tvFontScaleLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/font_medium"
+                    android:textColor="@color/ink"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/btnFontInc"
+                    android:layout_width="44dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/bg_icon_btn"
+                    android:text="+"
+                    android:textColor="@color/ink" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:text="@string/settings_notifications"
+                android:textColor="@color/ink_soft"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tvNotifStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:textColor="@color/ink"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/btnEnableNotif"
+                android:layout_width="wrap_content"
+                android:layout_height="42dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/btn_outline"
+                android:text="@string/btn_enable_notif"
+                android:textAllCaps="false"
+                android:textColor="@color/primary" />
+
+            <Button
+                android:id="@+id/btnClearChats"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/btn_outline"
+                android:text="@string/btn_clear_chats"
+                android:textAllCaps="false"
+                android:textColor="@color/primary" />
+
+            <Button
+                android:id="@+id/btnClearAllData"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_danger"
+                android:text="@string/btn_clear_all"
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

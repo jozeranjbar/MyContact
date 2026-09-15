@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">تماس من</string>
+
+    <!-- Welcome -->
+    <string name="welcome_title">تماس من</string>
+    <string name="welcome_sub">اتصال مستقیم و خصوصی؛ بدون سرور واسط برای پیام‌ها و تماس‌ها.</string>
+    <string name="starter_title">شروع‌کننده اتصال</string>
+    <string name="starter_desc">یک کد اتصال می‌سازید و برای طرف مقابل می‌فرستید.</string>
+    <string name="receiver_title">دریافت کد</string>
+    <string name="receiver_desc">کدی که طرف مقابل فرستاده را اینجا وارد می‌کنید.</string>
+
+    <!-- Connect -->
+    <string name="connect_title_starter">ایجاد اتصال</string>
+    <string name="connect_title_receiver">دریافت اتصال</string>
+    <string name="status_ready">آماده اتصال</string>
+    <string name="status_waiting_ice">در انتظار ICE…</string>
+    <string name="status_creating_offer">در حال ایجاد Offer…</string>
+    <string name="status_creating_answer">در حال ایجاد Answer…</string>
+    <string name="status_ready_to_send_offer">آماده ارسال کد اتصال</string>
+    <string name="status_ready_to_send_answer">آماده ارسال پاسخ</string>
+    <string name="status_connecting">در حال اتصال…</string>
+    <string name="status_connection_error">خطای اتصال</string>
+    <string name="step1_offer_title">ساخت کد اتصال</string>
+    <string name="step1_offer_desc">کد اتصال در حال ساخته شدن است؛ وقتی آماده شد، آن را برای طرف مقابل بفرستید.</string>
+    <string name="btn_rebuild_code">ساخت دوباره کد</string>
+    <string name="step2_offer_ready">کد اتصال شما آماده است</string>
+    <string name="step2_answer_ready">کد پاسخ شما آماده است</string>
+    <string name="code_share_desc">این کد را کپی یا از طریق برنامه‌های دیگر ارسال کنید.</string>
+    <string name="btn_copy_share_offer">کپی و ارسال کد اتصال</string>
+    <string name="btn_share_answer">ارسال کد پاسخ</string>
+    <string name="btn_show_qr">نمایش QR</string>
+    <string name="btn_scan_qr">اسکن QR</string>
+    <string name="step3_answer_title">وارد کردن کد پاسخ</string>
+    <string name="step3_answer_desc">کدی که طرف مقابل پس از دریافت کد شما ساخته، اینجا Paste کنید.</string>
+    <string name="answer_hint">کد پاسخ را اینجا وارد کنید و دکمه تأیید و اتصال را بزنید</string>
+    <string name="btn_confirm_connect">تأیید و اتصال</string>
+    <string name="step1_receiver_title">دریافت کد طرف مقابل</string>
+    <string name="step1_receiver_desc">کدی که طرف مقابل ساخته (Offer) را اینجا Paste کنید.</string>
+    <string name="offer_hint">کد دریافتی را اینجا وارد کنید و دکمه ایجاد پاسخ را بزنید</string>
+    <string name="btn_create_answer">ایجاد پاسخ</string>
+    <string name="err_enter_offer">لطفاً ابتدا کد Offer را وارد کنید.</string>
+    <string name="err_enter_answer">لطفاً ابتدا کد Answer را وارد کنید.</string>
+    <string name="confirm_back_title">بازگشت به صفحه اصلی</string>
+    <string name="confirm_back_desc">در صورت بازگشت، فرآیند اتصال فعلی لغو می‌شود. ادامه می‌دهید؟</string>
+
+    <!-- Chat -->
+    <string name="chat_not_connected">به کسی متصل نیستید</string>
+    <string name="chat_online">آنلاین</string>
+    <string name="status_connected">متصل</string>
+    <string name="status_disconnected">قطع</string>
+    <string name="status_unstable">اتصال ناپایدار…</string>
+    <string name="status_reconnecting">در حال تلاش برای اتصال مجدد…</string>
+    <string name="empty_chat">هنوز پیامی نیست. برای شروع باید ابتدا اتصال برقرار شود.</string>
+    <string name="msg_placeholder">پیام…</string>
+    <string name="msg_placeholder_disabled">برای ارسال پیام باید متصل باشید</string>
+    <string name="toast_need_connect_to_send">برای ارسال پیام باید متصل باشید.</string>
+    <string name="toast_need_connect_to_call">برای تماس ابتدا باید متصل باشید.</string>
+    <string name="toast_need_connect_to_file">برای ارسال فایل باید متصل باشید.</string>
+    <string name="download_file">دانلود فایل</string>
+    <string name="file_no_longer_available">این فایل دیگر در دسترس نیست.</string>
+    <string name="transferring">در حال انتقال…</string>
+    <string name="transfer_failed">انتقال ناموفق بود.</string>
+
+    <!-- Send/attach dialog -->
+    <string name="send_dialog_title">ارسال</string>
+    <string name="send_dialog_desc">می‌خواهید چه چیزی ارسال کنید؟</string>
+    <string name="pick_gallery">انتخاب از گالری</string>
+    <string name="pick_file">انتخاب فایل</string>
+
+    <!-- Call -->
+    <string name="call_dialog_title">شروع تماس</string>
+    <string name="call_dialog_desc">نوع تماس را انتخاب کنید.</string>
+    <string name="call_audio">تماس صوتی</string>
+    <string name="call_video">تماس تصویری</string>
+    <string name="call_connecting">در حال برقراری تماس…</string>
+    <string name="call_peer_default">طرف مقابل</string>
+    <string name="call_remote_hangup">طرف مقابل تماس را قطع کرد.</string>
+
+    <!-- Settings -->
+    <string name="settings_title">تنظیمات</string>
+    <string name="settings_display_name">نام نمایشی</string>
+    <string name="settings_display_name_hint">نامی که طرف مقابل می‌بیند</string>
+    <string name="settings_turn_domain">دامنه TURN (Metered)</string>
+    <string name="settings_turn_key">کلید مخفی TURN</string>
+    <string name="settings_font_size">اندازه فونت گفتگو</string>
+    <string name="font_small">کوچک</string>
+    <string name="font_medium">متوسط</string>
+    <string name="font_large">بزرگ</string>
+    <string name="font_xlarge">خیلی بزرگ</string>
+    <string name="settings_notifications">اعلان‌ها</string>
+    <string name="btn_enable_notif">فعال‌سازی اعلان‌ها</string>
+    <string name="btn_clear_chats">پاک‌کردن چت‌ها</string>
+    <string name="btn_clear_all">پاک‌کردن تمام داده‌ها</string>
+    <string name="confirm_clear_chats_title">پاک کردن چت‌ها</string>
+    <string name="confirm_clear_chats_desc">آیا مطمئنید می‌خواهید چت‌ها را پاک کنید؟ این کار قابل بازگشت نیست.</string>
+    <string name="confirm_clear_all_title">پاک کردن همه اطلاعات</string>
+    <string name="confirm_clear_all_desc">آیا مطمئنید می‌خواهید همه اطلاعات برنامه را پاک کنید؟ نام نمایشی، تنظیمات TURN و چت‌ها نیز پاک می‌شوند.</string>
+    <string name="toast_chats_cleared">چت‌ها پاک شدند.</string>
+    <string name="toast_all_cleared">همه اطلاعات برنامه پاک شدند.</string>
+
+    <string name="btn_cancel">انصراف</string>
+    <string name="btn_ok">باشه</string>
+</resources>
