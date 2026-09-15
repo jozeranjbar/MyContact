@@ -44,7 +44,7 @@ dependencies {
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     // WebRTC (native), maintained community build of Google's WebRTC for Android
-    implementation("io.github.webrtc-sdk:android:125.6422.07.1")
+    implementation("io.github.webrtc-sdk:android:144.7559.09")
 
     // QR generation
     implementation("com.google.zxing:core:3.5.3")
