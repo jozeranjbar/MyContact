@@ -63,18 +63,6 @@
         </LinearLayout>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvConnectLog"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/bg_elevated"
-        android:fontFamily="monospace"
-        android:maxLines="6"
-        android:padding="8dp"
-        android:textColor="@color/ink_soft"
-        android:textSize="11sp"
-        android:visibility="gone" />
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -197,6 +185,18 @@
                         android:textColor="@color/primary"
                         android:textSize="13sp" />
                 </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnNextStep"
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/btn_ghost"
+                    android:text="@string/btn_next_step"
+                    android:textAllCaps="false"
+                    android:textColor="@color/ink_soft"
+                    android:textSize="13sp"
+                    android:visibility="gone" />
             </LinearLayout>
 
             <!-- ===== Starter: step 3 — paste answer ===== -->
