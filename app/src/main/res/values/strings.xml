@@ -101,4 +101,5 @@
 
     <string name="btn_cancel">انصراف</string>
     <string name="btn_ok">باشه</string>
+    <string name="btn_next_step">مرحله بعد</string>
 </resources>
