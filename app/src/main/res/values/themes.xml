@@ -8,5 +8,6 @@
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
         <item name="android:layoutDirection">rtl</item>
         <item name="android:textDirection">rtl</item>
+        <item name="android:fontFamily">@font/vazirmatn</item>
     </style>
 </resources>
