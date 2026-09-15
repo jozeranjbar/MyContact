@@ -59,9 +59,9 @@ class Prefs(context: Context) {
         private const val KEY_HISTORY = "mycontact_history_v1"
         private const val MAX_HISTORY = 400
 
-        // Hardcoded as the app's default settings values per the user's request,
-        // so they don't need re-entering each time. Still editable in Settings.
-        const val DEFAULT_TURN_DOMAIN = "mycontact.metered.live"
+        // TURN settings are intentionally blank in the Settings screen.
+        // The built-in Metered TURN fallback is kept inside WebRtcManager.
+        const val DEFAULT_TURN_DOMAIN = ""
         const val DEFAULT_TURN_KEY = ""
     }
 }
