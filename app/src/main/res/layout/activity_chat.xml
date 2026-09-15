@@ -117,7 +117,7 @@
             android:layout_height="42dp"
             android:background="@drawable/round_btn"
             android:contentDescription="@string/send_dialog_title"
-            android:src="@android:drawable/ic_menu_attachment" />
+            android:src="@android:drawable/ic_menu_upload" />
 
         <EditText
             android:id="@+id/etChatInput"
