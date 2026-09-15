@@ -30,6 +30,7 @@ class ConnectActivity : AppCompatActivity(), Session.ConnectEventListener {
     private var role: String = "starter"
     private var lastGeneratedCode: String = ""
     private var pendingScanTarget: Int = 0 // 0=none, 1=answer paste box, 2=offer paste box
+    private var navigatedToChat: Boolean = false
 
     private val scanLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         val value = result.data?.getStringExtra(QrScanActivity.EXTRA_RESULT) ?: return@registerForActivityResult
@@ -55,6 +56,10 @@ class ConnectActivity : AppCompatActivity(), Session.ConnectEventListener {
         tvConnectLog = findViewById(R.id.tvConnectLog)
 
         findViewById<ImageButton>(R.id.btnConnectBack).setOnClickListener { confirmBack() }
+
+        findViewById<TextView>(R.id.tvStep1Title).text = "۱  " + getString(R.string.step1_offer_title)
+        findViewById<TextView>(R.id.tvStep3Title).text = "۳  " + getString(R.string.step3_answer_title)
+        findViewById<TextView>(R.id.tvReceiverStep1Title).text = "۱  " + getString(R.string.step1_receiver_title)
 
         if (role == "starter") {
             tvConnectTitle.text = getString(R.string.connect_title_starter)
@@ -102,11 +107,16 @@ class ConnectActivity : AppCompatActivity(), Session.ConnectEventListener {
             tvStatus.text = text
             val bg = when (kind) {
                 "good" -> R.drawable.pill_good
+                "ready" -> R.drawable.pill_good
                 "bad" -> R.drawable.pill_bad
                 "progress" -> R.drawable.pill_progress
                 else -> R.drawable.pill_idle
             }
             findViewById<LinearLayout>(R.id.statusPill).setBackgroundResource(bg)
+            if (kind == "good" && !navigatedToChat) {
+                navigatedToChat = true
+                goToChat()
+            }
         }
     }
 
@@ -128,8 +138,9 @@ class ConnectActivity : AppCompatActivity(), Session.ConnectEventListener {
                 setStatus(getString(R.string.status_waiting_ice), "progress")
                 val code = rtc.createOfferCode()
                 lastGeneratedCode = code
+                starterStep1Card.visibility = android.view.View.GONE
                 showGeneratedCode(true, code)
-                setStatus(getString(R.string.status_ready_to_send_offer), "good")
+                setStatus(getString(R.string.status_ready_to_send_offer), "ready")
             } catch (e: Exception) {
                 setStatus(getString(R.string.status_connection_error), "bad")
                 Toast.makeText(this@ConnectActivity, e.message ?: "خطا", Toast.LENGTH_LONG).show()
@@ -155,7 +166,6 @@ class ConnectActivity : AppCompatActivity(), Session.ConnectEventListener {
             try {
                 Session.webRtc?.acceptAnswer(code)
                 setStatus(getString(R.string.status_connecting), "progress")
-                goToChat()
             } catch (e: Exception) {
                 setStatus(getString(R.string.status_connection_error), "bad")
                 Toast.makeText(this@ConnectActivity, e.message ?: "خطا", Toast.LENGTH_LONG).show()
@@ -176,9 +186,9 @@ class ConnectActivity : AppCompatActivity(), Session.ConnectEventListener {
                 setStatus(getString(R.string.status_waiting_ice), "progress")
                 val answerCode = rtc.acceptOfferAndCreateAnswerCode(code)
                 lastGeneratedCode = answerCode
+                receiverStep1Card.visibility = android.view.View.GONE
                 showGeneratedCode(false, answerCode)
-                setStatus(getString(R.string.status_ready_to_send_answer), "good")
-                goToChat()
+                setStatus(getString(R.string.status_ready_to_send_answer), "ready")
             } catch (e: Exception) {
                 setStatus(getString(R.string.status_connection_error), "bad")
                 Toast.makeText(this@ConnectActivity, e.message ?: "خطا", Toast.LENGTH_LONG).show()
