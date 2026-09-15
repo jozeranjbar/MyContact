@@ -5,7 +5,6 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.Gravity
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -13,7 +12,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
 
@@ -25,7 +23,6 @@ class ConnectActivity : AppCompatActivity(), Session.ConnectEventListener {
     private lateinit var receiverStep1Card: LinearLayout
     private lateinit var tvConnectTitle: TextView
     private lateinit var tvStatus: TextView
-    private lateinit var tvConnectLog: TextView
 
     private var role: String = "starter"
     private var lastGeneratedCode: String = ""
@@ -53,7 +50,6 @@ class ConnectActivity : AppCompatActivity(), Session.ConnectEventListener {
         receiverStep1Card = findViewById(R.id.receiverStep1Card)
         tvConnectTitle = findViewById(R.id.tvConnectTitle)
         tvStatus = findViewById(R.id.tvStatus)
-        tvConnectLog = findViewById(R.id.tvConnectLog)
 
         findViewById<ImageButton>(R.id.btnConnectBack).setOnClickListener { confirmBack() }
 
@@ -82,7 +78,6 @@ class ConnectActivity : AppCompatActivity(), Session.ConnectEventListener {
         }
 
         findViewById<android.widget.Button>(R.id.btnShareCode).setOnClickListener { shareCode(lastGeneratedCode) }
-        findViewById<ImageButton>(R.id.btnShowQr) // placeholder, real listener set after code exists
         findViewById<android.widget.Button>(R.id.btnShowQr).setOnClickListener {
             startActivity(Intent(this, QrDisplayActivity::class.java).putExtra(QrDisplayActivity.EXTRA_CODE, lastGeneratedCode))
         }
@@ -121,10 +116,8 @@ class ConnectActivity : AppCompatActivity(), Session.ConnectEventListener {
     }
 
     override fun onLog(line: String) {
-        runOnUiThread {
-            tvConnectLog.visibility = android.view.View.VISIBLE
-            tvConnectLog.append(line + "\n")
-        }
+        // The raw ICE-gathering log isn't shown to the user anymore — it was
+        // internal debug detail with no everyday meaning.
     }
 
     private fun runCreateOffer() {
@@ -155,27 +148,51 @@ class ConnectActivity : AppCompatActivity(), Session.ConnectEventListener {
         findViewById<android.widget.EditText>(R.id.etGeneratedCode).setText(code)
         findViewById<android.widget.Button>(R.id.btnShareCode).text =
             getString(if (isOffer) R.string.btn_copy_share_offer else R.string.btn_share_answer)
-        if (isOffer) answerInputCard.visibility = android.view.View.VISIBLE
+
+        val btnNext = findViewById<android.widget.Button>(R.id.btnNextStep)
+        if (isOffer) {
+            btnNext.visibility = android.view.View.VISIBLE
+            btnNext.setOnClickListener {
+                codeResultCard.visibility = android.view.View.GONE
+                answerInputCard.visibility = android.view.View.VISIBLE
+            }
+        } else {
+            btnNext.visibility = android.view.View.GONE
+        }
     }
 
     private fun submitAnswer() {
-        val code = findViewById<android.widget.EditText>(R.id.etAnswerInput).text.toString()
+        val btn = findViewById<android.widget.Button>(R.id.btnConfirmConnect)
+        val input = findViewById<android.widget.EditText>(R.id.etAnswerInput)
+        if (!btn.isEnabled) return // already submitted once — ignore extra taps
+        val code = input.text.toString()
         if (code.isBlank()) { Toast.makeText(this, R.string.err_enter_answer, Toast.LENGTH_SHORT).show(); return }
+        btn.isEnabled = false
+        input.isEnabled = false
         setStatus(getString(R.string.status_connecting), "progress")
         lifecycleScope.launch {
             try {
                 Session.webRtc?.acceptAnswer(code)
                 setStatus(getString(R.string.status_connecting), "progress")
+                // Button stays disabled from here on: the SDP exchange is done,
+                // only ICE connectivity remains, and retrying can't fix that.
             } catch (e: Exception) {
                 setStatus(getString(R.string.status_connection_error), "bad")
                 Toast.makeText(this@ConnectActivity, e.message ?: "خطا", Toast.LENGTH_LONG).show()
+                btn.isEnabled = true
+                input.isEnabled = true
             }
         }
     }
 
     private fun submitOffer() {
-        val code = findViewById<android.widget.EditText>(R.id.etOfferInput).text.toString()
+        val btn = findViewById<android.widget.Button>(R.id.btnCreateAnswer)
+        val input = findViewById<android.widget.EditText>(R.id.etOfferInput)
+        if (!btn.isEnabled) return // already submitted once — ignore extra taps
+        val code = input.text.toString()
         if (code.isBlank()) { Toast.makeText(this, R.string.err_enter_offer, Toast.LENGTH_SHORT).show(); return }
+        btn.isEnabled = false
+        input.isEnabled = false
         setStatus(getString(R.string.status_creating_answer), "progress")
         val bridge = SessionRtcBridge(lifecycleScope)
         lifecycleScope.launch {
@@ -192,6 +209,8 @@ class ConnectActivity : AppCompatActivity(), Session.ConnectEventListener {
             } catch (e: Exception) {
                 setStatus(getString(R.string.status_connection_error), "bad")
                 Toast.makeText(this@ConnectActivity, e.message ?: "خطا", Toast.LENGTH_LONG).show()
+                btn.isEnabled = true
+                input.isEnabled = true
             }
         }
     }
