@@ -97,9 +97,10 @@
                 android:visibility="gone">
 
                 <TextView
+                    android:id="@+id/tvStep1Title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="۱  @string/step1_offer_title"
+                    android:text="@string/step1_offer_title"
                     android:textColor="@color/ink"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -138,7 +139,7 @@
                     android:id="@+id/tvCodeResultTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="۲  @string/step2_offer_ready"
+                    android:text="@string/step2_offer_ready"
                     android:textColor="@color/ink"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -210,9 +211,10 @@
                 android:visibility="gone">
 
                 <TextView
+                    android:id="@+id/tvStep3Title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="۳  @string/step3_answer_title"
+                    android:text="@string/step3_answer_title"
                     android:textColor="@color/ink"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -280,9 +282,10 @@
                 android:visibility="gone">
 
                 <TextView
+                    android:id="@+id/tvReceiverStep1Title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="۱  @string/step1_receiver_title"
+                    android:text="@string/step1_receiver_title"
                     android:textColor="@color/ink"
                     android:textSize="16sp"
                     android:textStyle="bold" />
