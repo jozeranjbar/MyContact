@@ -93,12 +93,27 @@ class WebRtcManager(
             PeerConnection.IceServer.builder("turn:openrelay.metered.ca:443?transport=tcp")
                 .setUsername("openrelayproject").setPassword("openrelayproject").createIceServer()
         )
-        val domain = prefs.turnDomain.trim()
-        val key = prefs.turnKey.trim()
-        if (domain.isNotEmpty() && key.isNotEmpty()) {
-            servers.add(PeerConnection.IceServer.builder("turn:$domain:80").setUsername("user").setPassword(key).createIceServer())
-            servers.add(PeerConnection.IceServer.builder("turn:$domain:443").setUsername("user").setPassword(key).createIceServer())
-            servers.add(PeerConnection.IceServer.builder("turn:$domain:443?transport=tcp").setUsername("user").setPassword(key).createIceServer())
+        // Built-in private Metered TURN fallback. These values are NOT shown in Settings.
+        // If the user enters a custom TURN domain/key in Settings, those servers are
+        // also added so they can be used when the built-in TURN is unavailable.
+        val builtInDomain = "mycontact.metered.live"
+        val builtInKey = "6aa613ae2e0de338c9633c56"
+        servers.add(PeerConnection.IceServer.builder("turn:$builtInDomain:80")
+            .setUsername("user").setPassword(builtInKey).createIceServer())
+        servers.add(PeerConnection.IceServer.builder("turn:$builtInDomain:443")
+            .setUsername("user").setPassword(builtInKey).createIceServer())
+        servers.add(PeerConnection.IceServer.builder("turn:$builtInDomain:443?transport=tcp")
+            .setUsername("user").setPassword(builtInKey).createIceServer())
+
+        val customDomain = prefs.turnDomain.trim()
+        val customKey = prefs.turnKey.trim()
+        if (customDomain.isNotEmpty() && customKey.isNotEmpty()) {
+            servers.add(PeerConnection.IceServer.builder("turn:$customDomain:80")
+                .setUsername("user").setPassword(customKey).createIceServer())
+            servers.add(PeerConnection.IceServer.builder("turn:$customDomain:443")
+                .setUsername("user").setPassword(customKey).createIceServer())
+            servers.add(PeerConnection.IceServer.builder("turn:$customDomain:443?transport=tcp")
+                .setUsername("user").setPassword(customKey).createIceServer())
         }
         return servers
     }
