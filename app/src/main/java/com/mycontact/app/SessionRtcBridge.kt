@@ -200,5 +200,3 @@ class SessionRtcBridge(private val scope: CoroutineScope) : WebRtcManager.Listen
         }
     }
 }
-EOF
-echo ok
